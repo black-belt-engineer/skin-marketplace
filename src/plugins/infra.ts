@@ -2,14 +2,23 @@ import fp from 'fastify-plugin';
 import fastifyPostgres from '@fastify/postgres';
 import fastifyRedis from '@fastify/redis';
 import { FastifyInstance } from 'fastify';
+import {
+    POSTGRES_USER,
+    POSTGRES_PASSWORD,
+    POSTGRES_HOST,
+    POSTGRES_PORT,
+    POSTGRES_DB,
+    REDIS_HOST,
+    REDIS_PORT,
+} from '../config/app-config';
 
-export default fp(async (server: FastifyInstance) => {
+export const infraPlugin = fp(async (server: FastifyInstance) => {
     await server.register(fastifyPostgres, {
-        connectionString: `postgres://${server.config.POSTGRES_USER}:${server.config.POSTGRES_PASSWORD}@${server.config.POSTGRES_HOST}:${server.config.POSTGRES_PORT}/${server.config.POSTGRES_DB}`,
+        connectionString: `postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}`,
     });
 
     await server.register(fastifyRedis, {
-        host: server.config.REDIS_HOST,
-        port: server.config.REDIS_PORT,
+        host: REDIS_HOST,
+        port: REDIS_PORT,
     });
 });
