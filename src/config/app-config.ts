@@ -9,4 +9,4 @@ export const POSTGRES_HOST = process.env.POSTGRES_HOST || '';
 export const POSTGRES_PORT = process.env.POSTGRES_PORT ? parseInt(process.env.POSTGRES_PORT) : 5432;
 export const REDIS_HOST = process.env.REDIS_HOST || '';
 export const REDIS_PORT = process.env.REDIS_PORT ? parseInt(process.env.REDIS_PORT) : 6379;
-export const SKINPORT_BASE_URL = process.env.SKINPORT_BASE_URL || 'https://api.skinport.com/v1/';
+export const SKINPORT_BASE_URL = process.env.SKINPORT_BASE_URL || '';
